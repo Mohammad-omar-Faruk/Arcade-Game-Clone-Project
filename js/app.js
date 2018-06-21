@@ -42,7 +42,7 @@ function youWin(){
 }
 
 // Enemies class 
-var Enemy = function(x, y, speed = 1) {
+var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     this.x = x;
     this.y = y;
@@ -56,10 +56,10 @@ var Enemy = function(x, y, speed = 1) {
 // To Update the enemy's position, required method for game-Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
-    this.x += 100 * this.speed * dt;
+    this.x += 50 * this.speed * dt;
     
     // collison detection
-    if (parseInt(this.x)+ 100 >= playerX && parseInt(this.x) <= playerX + 40 && this.y === playerY){
+    if (parseInt(this.x)+ 50 >= playerX && parseInt(this.x) <= playerX + 40 && this.y === playerY){
         console.log("a collision just occured your player diessss");  
         player.reset();
         alllives.pop();
@@ -191,15 +191,15 @@ var enemySpeed;
 setInterval(function instances(){
     enemyX = columns[Math.floor(Math.random() * 5)],
     enemyY = rows[Math.floor(Math.random() * 3)],
-    enemySpeed = Math.floor(Math.random() * 15),
+    enemySpeed = Math.floor(Math.random() * 5),
     allEnemies.push(new Enemy(enemyX, enemyY, enemySpeed)); 
-},500)
+},900)
 
 
 
 // Now instantiate your objects.
 // allEnemies- array of all enemy objects 
-var allEnemies = [ new Enemy(-8, 60, 3), new Enemy(0, 140, 10), new Enemy(-5, 300, 15)];
+var allEnemies = [ new Enemy(-8, 60, 5), new Enemy(0, 140, 10), new Enemy(-5, 300, 20)];
 
 // Place the player object in a variable called player
 var player = new Player( 200, 380);
